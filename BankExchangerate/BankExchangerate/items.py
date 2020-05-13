@@ -6,8 +6,9 @@
 # https://docs.scrapy.org/en/latest/topics/items.html
 
 
-from ...ExchangeRate.models import GetScrapy
+import scrapy
 from scrapy_djangoitem import DjangoItem
+from ExchangeRate.models import GetScrapy
 
 
 class BankexchangerateItem(DjangoItem):

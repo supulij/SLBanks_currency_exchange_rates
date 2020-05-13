@@ -1,5 +1,6 @@
 import scrapy
 from ..items import BankexchangerateItem
+from ExchangeRate.models import GetScrapy
 
 print("bankspider1")
 
@@ -19,6 +20,16 @@ class BankSpider1(scrapy.Spider):
             items['currency_name'] = row.xpath('td[1]//text()').extract_first()
             items['buying_rate'] = row.xpath('td[2]//text()').extract_first()
             items['selling_rate'] = row.xpath('td[3]//text()').extract_first()
+
+
+
+        for i in range(10):
+            currency = GetScrapy()
+            currency.bank = items["bank"][i]
+            currency.currency_name = items["currency_name"][i]
+            currency.buying_rate = items["buying_rate"][i]
+            currency.selling_rate = items["selling_rate"][i]
+            currency.save()
 
             yield items
 
