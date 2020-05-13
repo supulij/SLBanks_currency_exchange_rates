@@ -15,8 +15,9 @@ from ...ExchangeRate.models import GetScrapy
 class GetScrapyPipeline(object):
 
     def process_item(self, item, spider):
-        rate = GetScrapy(bank=item.get('bank'), currency_name=item.get('currency_name'), buying_rate=item.get('buying_rate'), selling_rate=item.get('selling_rate'))
-        rate.save()
+        # rate = GetScrapy(bank=item.get('bank'), currency_name=item.get('currency_name'), buying_rate=item.get('buying_rate'), selling_rate=item.get('selling_rate'))
+        item.save()
+        print("pipeline")
         return item
 
 

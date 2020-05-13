@@ -1,9 +1,11 @@
 # from django.conf import settings
 # from django.conf.urls import static
+from django.views.generic import TemplateView
 from . import views
 from django.urls import path
 
 urlpatterns = [
+
     path('', views.crawl),
 
 ]

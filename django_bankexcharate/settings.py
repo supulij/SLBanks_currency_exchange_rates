@@ -26,7 +26,8 @@ SECRET_KEY = '3ez))ynu*j-2^1ofw#8-3bbbo*7n5yvn-ex!^09lx%spnlbd+7'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+import os
+os.environ['SCRAPY_SETTINGS_MODULE'] = 'BankExchangerate.settings'
 
 # Application definition
 

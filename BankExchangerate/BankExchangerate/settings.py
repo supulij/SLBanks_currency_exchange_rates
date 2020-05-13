@@ -2,16 +2,15 @@
 
 # Scrapy settings for BankExchangerate project
 
-import os
-import sys
+
 import os
 import sys
 import django
 
 
-sys.path.append(os.path.dirname(os.path.abspath('.')))
-os.environ['DJANGO_SETTINGS_MODULE'] = 'django_bankexchangerate.settings'
-django.setup()
+# sys.path.append(os.path.dirname(os.path.abspath('.')))
+# os.environ['DJANGO_SETTINGS_MODULE'] = 'django_bankexchangerate.settings'
+# django.setup()
 
 BOT_NAME = 'BankExchangerate'
 

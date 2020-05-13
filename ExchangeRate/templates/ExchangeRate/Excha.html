@@ -1,4 +1,5 @@
 {#{% load static %}#}
+{{ data }}
 
 <!doctype html>
 <html lang="en">
@@ -15,25 +16,35 @@
 </head>
 <body>
 <h1>Foreign Currency Exchange Rates of Sri Lankan Banks</h1>
+<br>
+<br>
 
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Bank</th>
-      <th scope="col">Currency</th>
-      <th scope="col">Selling</th>
-      <th scope="col">Buying</th>
+      <th scope="col">Currency Name</th>
+      <th scope="col">Buying Rate</th>
+      <th scope="col">Selling Rate</th>
     </tr>
   </thead>
-  <tbody>
-    {% for value in item %}
-        <tr>
-          <td>item.bankname</td>
-          <td>item.currencyname</td>
-          <td>item.sellingrate</td>
-          <td>item.buyingrate</td>
+    <tbody>
+       <tr>
+          <td>{{ bank }}</td>
+          <td>{{ currency_name }}</td>
+          <td>{{ buying_rate}}</td>
+          <td>{{ selling_rate}}</td>
         </tr>
-    {% endfor %}
+
+{#        <tr>#}
+{#       {% for value in item %}#}
+{#          <td>{{ bank }}</td>#}
+{#          <td>{{ currency_name }}</td>#}
+{#          <td>{{ buying_rat}}</td>#}
+{#          <td>{{ selling_rate }}</td>#}
+{#       {% endfor %}#}
+{#        </tr>#}
+
 {#    <tr>#}
 {#      <td>Bank</td>#}
 {#      <td>Jacob</td>#}
