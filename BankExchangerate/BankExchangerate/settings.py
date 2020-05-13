@@ -24,7 +24,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'BankExchangerate.pipelines.GetScrapyPipeline': 300,
+    'BankExchangerate.pipelines.BankexchangerateItemPipeline': 300,
 }
 
 
