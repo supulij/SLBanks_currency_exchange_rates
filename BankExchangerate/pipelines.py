@@ -7,24 +7,38 @@
 
 
 # import json
-
+import re
 from scrapy.exceptions import DropItem
 from ExchangeRate.models import GetScrapy
 import sqlite3
 
 
-# class CurrencyprocessPipeline(object):
-#
-#     def process_item(self, item, spider):
-#         if 'currency_name' in item:
-#             item['currency_name'] = item['currency_name'].replace('.', '')
-#
-#         if float(item['selling_rate']) or float(item['buying_rate']) in item:
-#             pass
-#         else:
-#             raise DropItem(item)
-#         item.save()
-#         yield item
+def curreny_process(item):
+    if float(item['selling_rate']) or float(item['buying_rate']) in item:
+        pass
+    else:
+        raise DropItem(item)
+
+    if 'currency_name' in item:
+        item['currency_name'] = item['currency_name'].replace('.', '')
+        item['currency_name'] = re.sub(" \(.*?\)" , "", item['currency_name'])
+
+    result = re.search("(Dollars|Kroner|Dinars|Francs)$", item['currency_name'])
+    if result:
+        item['currency_name'] = re.sub(".$","", item['currency_name'])
+
+    if item['currency_name'] in ['British Pounds','Great Britain Pounds','Pounds Sterling']:
+        item['currency_name'] = 'UK Pound'
+    elif item['currency_name'] == 'Chinese Renminbi':
+        item['currency_name'] = 'Chinese Yuan'
+    elif item['currency_name'] == 'EURO':
+        item['currency_name'] = 'Euro'
+    elif item['currency_name'] in ['UAE Dirams', 'United Arab Emirates Dirham']:
+        item['currency_name'] = 'UAE Dirham'
+    elif item['currency_name'] == 'Swedish Krone':
+        item['currency_name'] = 'Swedish Krona'
+
+    return item
 
 
 
@@ -48,12 +62,13 @@ class BankexchangerateItemPipeline(object):
                             )""")
 
     def process_item(self, item, spider):
-        if 'currency_name' in item:
-            item['currency_name'] = item['currency_name'].replace('.', '')
-        if float(item['selling_rate']) or float(item['buying_rate']) in item:
-            pass
-        else:
-            raise DropItem(item)
+        # if 'currency_name' in item:
+        #     item['currency_name'] = item['currency_name'].replace('.', '')
+        # if float(item['selling_rate']) or float(item['buying_rate']) in item:
+        #     pass
+        # else:
+        #     raise DropItem(item)
+        item = curreny_process(item)
 
         self.store_db(item)
         currency = GetScrapy()
@@ -77,3 +92,17 @@ class BankexchangerateItemPipeline(object):
 
 
 
+#
+# class CurrencyprocessPipeline(object):
+#     print('process items')
+#
+#     def process_item(self, item, spider):
+#         if 'currency_name' in item:
+#             item['currency_name'] = item['currency_name'].replace('.', '')
+#
+#         if float(item['selling_rate']) or float(item['buying_rate']) in item:
+#             pass
+#         else:
+#             raise DropItem(item)
+#         item.save()
+#         yield item

@@ -25,7 +25,7 @@ ROBOTSTXT_OBEY = True
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     # 'BankExchangerate.pipelines.CurrencyprocessPipeline': 300,
-    'BankExchangerate.pipelines.BankexchangerateItemPipeline': 380,
+    'BankExchangerate.pipelines.BankexchangerateItemPipeline': 400,
 }
 
 

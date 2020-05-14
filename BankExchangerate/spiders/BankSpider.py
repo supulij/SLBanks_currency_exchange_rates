@@ -12,15 +12,15 @@ class BankSpider1(scrapy.Spider):
         ]
 
     def parse(self, response):
-        items = BankexchangerateItem()
+        item = BankexchangerateItem()
 
-        items['bank'] = BankSpider1.name
+        item['bank'] = BankSpider1.name
         for row in response.xpath('//*[@class = "exch-rates"]/tr'):
-            items['currency_name'] = row.xpath('td[1]//text()').extract_first()
-            items['buying_rate'] = row.xpath('td[2]//text()').extract_first()
-            items['selling_rate'] = row.xpath('td[3]//text()').extract_first()
+            item['currency_name'] = row.xpath('td[1]//text()').extract_first()
+            item['buying_rate'] = row.xpath('td[2]//text()').extract_first()
+            item['selling_rate'] = row.xpath('td[3]//text()').extract_first()
 
-            yield items
+            yield item
 
 
 class BankSpider2(scrapy.Spider):
@@ -31,14 +31,14 @@ class BankSpider2(scrapy.Spider):
         ]
 
     def parse(self, response):
-        items = BankexchangerateItem()
-        items['bank'] = BankSpider2.name
+        item = BankexchangerateItem()
+        item['bank'] = BankSpider2.name
         for row in response.xpath('//tr[@class ="classTableRowColor1" or  "TableRowColor2"]'):
-            items['currency_name'] = row.xpath('td[1]/font[@class = "classFontLCNormalLabels"]//text()').extract_first()
-            items['buying_rate'] = row.xpath('td[2]//text()').extract_first()
-            items['selling_rate'] = row.xpath('td[3]//text()').extract_first()
+            item['currency_name'] = row.xpath('td[1]/font[@class = "classFontLCNormalLabels"]//text()').extract_first()
+            item['buying_rate'] = row.xpath('td[2]//text()').extract_first()
+            item['selling_rate'] = row.xpath('td[3]//text()').extract_first()
 
-            yield items
+            yield item
 
 
 class BankSpider3(scrapy.Spider):
@@ -49,14 +49,14 @@ class BankSpider3(scrapy.Spider):
         ]
 
     def parse(self, response):
-        items = BankexchangerateItem()
-        items['bank'] = BankSpider3.name
+        item = BankexchangerateItem()
+        item['bank'] = BankSpider3.name
         for row in response.xpath('//*[@class = "table"]/tr'):
-            items['currency_name'] = row.xpath('td[1]//text()').extract_first()
-            items['buying_rate'] = row.xpath('td[3]//text()').extract_first()
-            items['selling_rate'] = row.xpath('td[4]//text()').extract_first()
+            item['currency_name'] = row.xpath('td[1]//text()').extract_first()
+            item['buying_rate'] = row.xpath('td[3]//text()').extract_first()
+            item['selling_rate'] = row.xpath('td[4]//text()').extract_first()
 
-            yield items
+            yield item
 
 
 class BankSpider4(scrapy.Spider):
@@ -68,12 +68,12 @@ class BankSpider4(scrapy.Spider):
         ]
 
     def parse(self, response):
-        items = BankexchangerateItem()
-        items['bank'] = BankSpider4.name
+        item = BankexchangerateItem()
+        item['bank'] = BankSpider4.name
         for row in response.xpath('//div[@class ="rates_panel"]//tr'):
-            items['currency_name'] = row.xpath('td[1]//text()').extract_first()
-            items['buying_rate'] = row.xpath('td[2]//text()').extract_first()
-            items['selling_rate'] = row.xpath('td[3]//text()').extract_first()
+            item['currency_name'] = row.xpath('td[1]//text()').extract_first()
+            item['buying_rate'] = row.xpath('td[2]//text()').extract_first()
+            item['selling_rate'] = row.xpath('td[3]//text()').extract_first()
 
-            yield items
+            yield item
 
