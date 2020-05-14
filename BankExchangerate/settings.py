@@ -7,8 +7,8 @@ import os
 import sys
 import django
 
-
-sys.path.append(os.path.dirname(os.path.abspath('.')))
+sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".."))
+# sys.path.append(os.path.dirname(os.path.abspath('.')))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'django_bankexchangerate.settings'
 django.setup()
 
@@ -24,7 +24,8 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'BankExchangerate.pipelines.BankexchangerateItemPipeline': 300,
+    # 'BankExchangerate.pipelines.CurrencyprocessPipeline': 300,
+    'BankExchangerate.pipelines.BankexchangerateItemPipeline': 380,
 }
 
 

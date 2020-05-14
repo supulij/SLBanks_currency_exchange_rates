@@ -8,10 +8,25 @@
 
 # import json
 
-# from scrapy.exceptions import DropItem
-
-from ...ExchangeRate.models import GetScrapy
+from scrapy.exceptions import DropItem
+from ExchangeRate.models import GetScrapy
 import sqlite3
+
+print("pipeline")
+
+
+# class CurrencyprocessPipeline(object):
+#
+#     def process_item(self, item, spider):
+#         if 'currency_name' in item:
+#             item['currency_name'] = item['currency_name'].replace('.', '')
+#
+#         if float(item['selling_rate']) or float(item['buying_rate']) in item:
+#             pass
+#         else:
+#             raise DropItem(item)
+#         item.save()
+#         yield item
 
 
 class BankexchangerateItemPipeline(object):
@@ -35,6 +50,14 @@ class BankexchangerateItemPipeline(object):
 
     def process_item(self, item, spider):
         print("going to db")
+
+        if 'currency_name' in item:
+            item['currency_name'] = item['currency_name'].replace('.', '')
+        if float(item['selling_rate']) or float(item['buying_rate']) in item:
+            pass
+        else:
+            raise DropItem(item)
+
         self.store_db(item)
         currency = GetScrapy()
         currency.bank = item["bank"]
@@ -45,13 +68,12 @@ class BankexchangerateItemPipeline(object):
         return item
 
     def store_db(self, item):
-        item_length = 30
-        for i in range(0, item_length):
-            self.curr.execute("""insert into item_tb values (?,?,?,?)""", (
-                item['bank'][i],
-                item['currency_name'][i],
-                item['buying_rate'][i],
-                item['selling_rate'][i]
+        print("storing")
+        self.curr.execute("""insert into item_tb values (?,?,?,?)""", (
+                item['bank'],
+                item['currency_name'],
+                item['buying_rate'],
+                item['selling_rate']
             ))
 
         self.conn.commit()
