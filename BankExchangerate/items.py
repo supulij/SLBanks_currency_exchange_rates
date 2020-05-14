@@ -11,6 +11,8 @@ from scrapy_djangoitem import DjangoItem
 from ExchangeRate.models import GetScrapy
 
 print("items")
+
+
 class BankexchangerateItem(DjangoItem):
     django_model = GetScrapy
 
