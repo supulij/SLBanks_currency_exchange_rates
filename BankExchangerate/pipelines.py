@@ -13,6 +13,21 @@ from ExchangeRate.models import GetScrapy
 import sqlite3
 
 
+# class CurrencyprocessPipeline(object):
+#
+#     def process_item(self, item, spider):
+#         if 'currency_name' in item:
+#             item['currency_name'] = item['currency_name'].replace('.', '')
+#
+#         if float(item['selling_rate']) or float(item['buying_rate']) in item:
+#             pass
+#         else:
+#             raise DropItem(item)
+#         item.save()
+#         yield item
+
+
+
 class BankexchangerateItemPipeline(object):
 
     def __init__(self):
@@ -62,15 +77,3 @@ class BankexchangerateItemPipeline(object):
 
 
 
-# class CurrencyprocessPipeline(object):
-#
-#     def process_item(self, item, spider):
-#         if 'currency_name' in item:
-#             item['currency_name'] = item['currency_name'].replace('.', '')
-#
-#         if float(item['selling_rate']) or float(item['buying_rate']) in item:
-#             pass
-#         else:
-#             raise DropItem(item)
-#         item.save()
-#         yield item

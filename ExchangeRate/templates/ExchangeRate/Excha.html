@@ -13,9 +13,19 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Exchange Rates</title>
+
 </head>
 <body>
-<h1>Foreign Currency Exchange Rates of Sri Lankan Banks</h1>
+<form method ="post">
+    <h1>Foreign Currency Exchange Rates of Sri Lankan Banks</h1>
+
+<br>
+<br>
+{#    <button type = "Submit">Click Here</button>#}
+{#    {% csrf_token %}#}
+</form>
+
+<h2> Foreign Currency Exchange Rates of Sri Lankan Banks </h2>
 <br>
 <br>
 
@@ -29,35 +39,16 @@
     </tr>
   </thead>
     <tbody>
+    {% for item in context %}
        <tr>
-          <td>{{ bank }}</td>
-          <td>{{ currency_name }}</td>
-          <td>{{ buying_rate}}</td>
-          <td>{{ selling_rate}}</td>
+          <td>{{ item.bank }}</td>
+          <td>{{ item.currency_name }}</td>
+          <td>{{ item.buying_rate}}</td>
+          <td>{{ item.selling_rate}}</td>
         </tr>
-
-{#        <tr>#}
-{#       {% for value in item %}#}
-{#          <td>{{ bank }}</td>#}
-{#          <td>{{ currency_name }}</td>#}
-{#          <td>{{ buying_rat}}</td>#}
-{#          <td>{{ selling_rate }}</td>#}
-{#       {% endfor %}#}
-{#        </tr>#}
-
-{#    <tr>#}
-{#      <td>Bank</td>#}
-{#      <td>Jacob</td>#}
-{#      <td>Thornton</td>#}
-{#      <td>@fat</td>#}
-{#    </tr>#}
-{#    #}
-
-  </tbody>
+    {% endfor %}
+    </tbody>
 </table>
-
-
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -72,3 +63,8 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+
+
+

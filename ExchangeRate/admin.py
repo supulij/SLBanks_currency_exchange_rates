@@ -6,4 +6,3 @@ from .models import GetScrapy
 
 admin.site.register(GetScrapy)
 
-print("admin")

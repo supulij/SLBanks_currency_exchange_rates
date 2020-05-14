@@ -1,7 +1,7 @@
 import scrapy
 from BankExchangerate.items import BankexchangerateItem
 
-print("bankspider1")
+# print("bankspider1")
 
 
 class BankSpider1(scrapy.Spider):

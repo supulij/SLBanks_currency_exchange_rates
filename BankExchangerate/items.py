@@ -10,7 +10,7 @@ import scrapy
 from scrapy_djangoitem import DjangoItem
 from ExchangeRate.models import GetScrapy
 
-print("items")
+# print("items")
 
 
 class BankexchangerateItem(DjangoItem):
@@ -18,11 +18,5 @@ class BankexchangerateItem(DjangoItem):
 
 
 
-
-# class BankexchangerateItem(scrapy.Item):
-#     bank = scrapy.Field()
-#     currency_name = scrapy.Field()
-#     buying_rate = scrapy.Field()
-#     selling_rate = scrapy.Field()
 
 
