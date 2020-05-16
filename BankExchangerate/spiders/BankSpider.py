@@ -19,6 +19,7 @@ class BankSpider1(scrapy.Spider):
             item['currency_name'] = row.xpath('td[1]//text()').extract_first()
             item['buying_rate'] = row.xpath('td[2]//text()').extract_first()
             item['selling_rate'] = row.xpath('td[3]//text()').extract_first()
+            # item['id'] = item['bank']+item['currency_name']
 
             yield item
 
@@ -37,6 +38,7 @@ class BankSpider2(scrapy.Spider):
             item['currency_name'] = row.xpath('td[1]/font[@class = "classFontLCNormalLabels"]//text()').extract_first()
             item['buying_rate'] = row.xpath('td[2]//text()').extract_first()
             item['selling_rate'] = row.xpath('td[3]//text()').extract_first()
+            # item['id'] = item['bank'] + item['currency_name']
 
             yield item
 
@@ -55,6 +57,7 @@ class BankSpider3(scrapy.Spider):
             item['currency_name'] = row.xpath('td[1]//text()').extract_first()
             item['buying_rate'] = row.xpath('td[3]//text()').extract_first()
             item['selling_rate'] = row.xpath('td[4]//text()').extract_first()
+            # item['id'] = item['bank'] + item['currency_name']
 
             yield item
 
@@ -74,6 +77,7 @@ class BankSpider4(scrapy.Spider):
             item['currency_name'] = row.xpath('td[1]//text()').extract_first()
             item['buying_rate'] = row.xpath('td[2]//text()').extract_first()
             item['selling_rate'] = row.xpath('td[3]//text()').extract_first()
+            # item['id'] = item['bank'] + item['currency_name']
 
             yield item
 
