@@ -16,7 +16,7 @@ def home(request):
         context = GetScrapy.objects.filter(currency_name=currency)
         last_updated = context[0].updated
 
-        form = Homeform()
+        # form = Homeform()
 
         args = {'form': form, 'context': context, 'currency': currency, 'last_updated': last_updated}
         return render(request, 'ExchangeRate/Excha.html', args)

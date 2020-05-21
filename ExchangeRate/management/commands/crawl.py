@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from BankExchangerate.spiders.BankSpider import BankSpider1, BankSpider2, BankSpider3, BankSpider4
+from BankExchangerate.spiders.BankSpider import BankSpider1, BankSpider2, BankSpider3, BankSpider4, BankSpider5, BankSpider6
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
@@ -15,4 +15,6 @@ class Command(BaseCommand):
         process.crawl(BankSpider2)
         process.crawl(BankSpider3)
         process.crawl(BankSpider4)
+        process.crawl(BankSpider5)
+        process.crawl(BankSpider6)
         process.start()

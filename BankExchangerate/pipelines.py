@@ -23,16 +23,22 @@ def curreny_process(item):
         item['currency_name'] = item['currency_name'].replace('.', '')
         item['currency_name'] = re.sub(" \(.*?\)" , "", item['currency_name'])
 
-    result = re.search("(Dollars|Kroner|Dinars|Francs)$", item['currency_name'])
+    result = re.search("(Dollars|Kroner|Dinars|Francs|Riyals|Dirhams)$", item['currency_name'])
     if result:
         item['currency_name'] = re.sub(".$","", item['currency_name'])
 
-    if item['currency_name'] in ['British Pounds','Great Britain Pounds','Pounds Sterling']:
+    if item['currency_name'] in ['British Pounds','Great Britain Pounds','Great Britain Pound','Pounds Sterling']:
         item['currency_name'] = 'UK Pound'
     elif item['currency_name'] == 'Chinese Renminbi':
         item['currency_name'] = 'Chinese Yuan'
+    elif item['currency_name'] == 'Omanian Riyal':
+        item['currency_name'] = 'Omani Riyal'
     elif item['currency_name'] == 'EURO':
         item['currency_name'] = 'Euro'
+    elif item['currency_name'] == 'Hongkong Dollar':
+        item['currency_name'] = 'Hong Kong Dollar'
+    elif item['currency_name'] == 'Norweigian Krone':
+        item['currency_name'] = 'Norwegian Krone'
     elif item['currency_name'] in ['UAE Dirams', 'United Arab Emirates Dirham']:
         item['currency_name'] = 'UAE Dirham'
     elif item['currency_name'] == 'Swedish Krone':

@@ -81,3 +81,42 @@ class BankSpider4(scrapy.Spider):
 
             yield item
 
+
+class BankSpider5(scrapy.Spider):
+    name = "People's Bank"
+
+    start_urls = [
+            'https://www.peoplesbank.lk/foreign-exchange-rates',
+
+        ]
+
+    def parse(self, response):
+        items = BankexchangerateItem()
+        items['bank'] = BankSpider5.name
+        for row in response.xpath('//div[@class ="table-responsive rates-table"]//tr'):
+            items['currency_name'] = row.xpath('td[2]//text()').extract_first()
+            items['buying_rate'] = row.xpath('td[3]//text()').extract_first()
+            items['selling_rate'] = row.xpath('td[4]//text()').extract_first()
+
+            yield items
+
+
+class BankSpider6(scrapy.Spider):
+    name = 'Seylan'
+
+    start_urls = [
+            'https://www.seylan.lk/exchange-rates',
+
+        ]
+
+    def parse(self, response):
+        items = BankexchangerateItem()
+        items['bank'] = BankSpider6.name
+        for row in response.xpath('//div[@class ="container xrate_container table-responsive"]//tr'):
+            items['currency_name'] = row.xpath('td[2]//text()').extract_first()
+            items['buying_rate'] = row.xpath('td[4]//text()').extract_first()
+            items['selling_rate'] = row.xpath('td[5]//text()').extract_first()
+
+            yield items
+
+
