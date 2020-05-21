@@ -4,19 +4,52 @@
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
+
+
+<style>
+    h1 {
+        font-size: 36px;
+        line-height: 40px;
+    }
+
+    .button {
+        background-color: cadetblue;
+        margin-top: 2%;
+        margin-left: 50%;
+        border: none;
+        color: black;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 0.9em;
+    }
+
+    .form_table {
+        margin-top: -2%;
+        margin-left: 30%;
+        font-size: 1.1em;
+    }
+
+
+</style>
+
+
 <body>
 <h1> Foreign Currency Exchange Rates of Sri Lankan Banks </h1>
 
 <br>
 <br>
 
-<form method ="post">
-    {% csrf_token %}
-    {{ form}}
-    <button type="submit">Submit</button>
-
+<form method="post">
+    <table class="form_table">
+        {% csrf_token %}
+        {{ form }}
+        <button class="button" type="submit">Submit</button>
+    </table>
 </form>
-
+{% block content %}
+{% endblock %}
 </body>
 </html>
 

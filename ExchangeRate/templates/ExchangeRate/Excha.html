@@ -1,98 +1,83 @@
 {#{% load static %}#}
+{% extends 'ExchangeRate/Home.html' %}
 {{ data }}
 
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{#</head>#}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Exchange Rates</title>
-    <br>
-<br>
-
-</head>
+<body>
 <style>
-    .content-table{
+    {#h1 {#}
+    {#    font-size: 36px;#}
+    {#    line-height: 40px;#}
+    {#    }#}
+    h3 {
+        font-size: 24px;
+        text-align: center;
+        line-height: 40px;
+    }
+
+    h5 {
+        font-size: 14px;
+        text-align: right;
+        line-height: 20px;
+    }
+
+
+    .content-table {
         border-collapse: collapse;
-        margin-left: auto;
+    {#padding-left: inherit;#} margin-left: auto;
         margin-right: auto;
-        font-size: 1 em;
+        font-size: 1em;
         min-width: 400px;
     }
 
-     .content-table thead th{
-         background-color: aquamarine;
-         color: black;
-         text-align: center;
-         font-weight: bold;
+
+    .content-table thead th {
+        background-color: aquamarine;
+        color: black;
+        text-align: center;
+        font-weight: bold;
     }
 
 
 </style>
 
+{% block content %}
 
-<body>
-<h1> Foreign Currency Exchange Rates of Sri Lankan Banks </h1>
-      <br>
-<br>
-  <form method ="post">
-    {% csrf_token %}
-    {{ form}}
-    <button type="submit">Submit</button>
-</form>
-      <br>
-<br>
+    <table class="content-table">
+        <thead>
 
-<table class="content-table">
-  <thead>
-
-    <br>
-<br>
-
-    <h3> Last update on {{ last_updated }} (BST) </h3>
-     <h3> Selected Currency : {{ currency}} </h3>
-  <br>
-<br>
-    </tr>
-						<tr class="content-table" >
-							<th> Bank</th>
-                            <th> Buying Rate</th>
-                            <th> Selling Rate</th>
-
-    </tr>
-  </thead>
-  <tbody>
-
-            {% for item in context %}
-                <tr>
-                        <td> {{ item.bank}}</td>
-                        <td> {{ item.buying_rate}}</td>
-                        <td> {{ item.selling_rate}}</td>
-
-                </tr>
-
-            {% endfor %}
-
-  </tbody>
-</table>
+        <br>
+        <br>
 
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+        <h3> Selected Currency : {{ currency }} </h3>
+        <br>
+        <br>
+        </tr>
+        <tr class="content-table">
+            <th> Bank</th>
+            <th> Buying Rate</th>
+            <th> Selling Rate</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for item in context %}
+            <tr>
+                <td> {{ item.bank }}</td>
+                <td> {{ item.buying_rate }}</td>
+                <td> {{ item.selling_rate }}</td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <h5> Last update on {{ last_updated }} (BST) </h5>
+
+{% endblock %}
+
