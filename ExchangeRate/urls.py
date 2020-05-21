@@ -5,9 +5,9 @@ from . import views
 from django.urls import path
 
 urlpatterns = [
-
-    path('', views.crawl),
-
+    path('', views.home),
+    # path('/detail', views.crawl),
+#
 ]
 
 # This is required for static files while in development mode. (DEBUG=TRUE)

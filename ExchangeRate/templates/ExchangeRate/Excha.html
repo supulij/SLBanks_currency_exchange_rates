@@ -13,48 +13,74 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Exchange Rates</title>
+    <br>
+<br>
 
 </head>
+<style>
+    .content-table{
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1 em;
+        min-width: 400px;
+    }
+
+     .content-table thead th{
+         background-color: aquamarine;
+         color: black;
+         text-align: center;
+         font-weight: bold;
+    }
+
+
+</style>
+
+
 <body>
-<form method ="post">
-    <h1>Foreign Currency Exchange Rates of Sri Lankan Banks</h1>
-
+<h1> Foreign Currency Exchange Rates of Sri Lankan Banks </h1>
+      <br>
 <br>
-<br>
-{#    <button type = "Submit">Click Here</button>#}
-{#    {% csrf_token %}#}
+  <form method ="post">
+    {% csrf_token %}
+    {{ form}}
+    <button type="submit">Submit</button>
 </form>
-
-<h2> Foreign Currency Exchange Rates of Sri Lankan Banks </h2>
-<br>
+      <br>
 <br>
 
-
-
-<table class="table">
+<table class="content-table">
   <thead>
-    <tr>
-      <th scope="col">Bank</th>
-      <th scope="col">Currency Name</th>
-      <th scope="col">Buying Rate</th>
-      <th scope="col">Selling Rate</th>
+
+    <br>
+<br>
+
+    <h3> Last update on {{ last_updated }} (BST) </h3>
+     <h3> Selected Currency : {{ currency}} </h3>
+  <br>
+<br>
+    </tr>
+						<tr class="content-table" >
+							<th> Bank</th>
+                            <th> Buying Rate</th>
+                            <th> Selling Rate</th>
+
     </tr>
   </thead>
-    <tbody>
-    {% for item in context %}
-       <tr>
-          <td>{{ item.bank }}</td>
-          <td>{{ item.currency_name }}</td>
-          <td>{{ item.buying_rate}}</td>
-          <td>{{ item.selling_rate}}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
+  <tbody>
+
+            {% for item in context %}
+                <tr>
+                        <td> {{ item.bank}}</td>
+                        <td> {{ item.buying_rate}}</td>
+                        <td> {{ item.selling_rate}}</td>
+
+                </tr>
+
+            {% endfor %}
+
+  </tbody>
 </table>
-
-
-
-
 
 
 <!-- Optional JavaScript -->
@@ -70,36 +96,3 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
-
-{##}
-{#<table class="table table-sm">#}
-{#  <thead>#}
-{#    <tr>#}
-{#      <th colspan="2">Buying Rate</th>#}
-{#      <th colspan="2">Selling Rate</th>#}
-{#      <th scope="col">Last</th>#}
-{#      <th scope="col">Handle</th>#}
-{#    </tr>#}
-{#  </thead>#}
-{#  <tbody>#}
-{#    <tr>#}
-{#      <th scope="row">1</th>#}
-{#      <td>Mark</td>#}
-{#      <td>Otto</td>#}
-{#      <td>@mdo</td>#}
-{#    </tr>#}
-{#    <tr>#}
-{#      <th scope="row">2</th>#}
-{#      <td>Jacob</td>#}
-{#      <td>Thornton</td>#}
-{#      <td>@fat</td>#}
-{#    </tr>#}
-{#    <tr>#}
-{#      <th scope="row">3</th>#}
-{#      <td colspan="2">Larry the Bird</td>#}
-{#      <td>@twitter</td>#}
-{#    </tr>#}
-{#  </tbody>#}
-{#</table>#}
-
-

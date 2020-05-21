@@ -9,9 +9,12 @@ class GetScrapy(models.Model):
     buying_rate = models.CharField(max_length=20)
     selling_rate = models.CharField(max_length=20)
 
+    # timestamp = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
     class Meta:
         db_table = 'Exchange_Rates'
-        ordering = ['currency_name']
+        ordering = ['currency_name', 'bank']
 
     def __str__(self):
         return '{} {}'.format(self.bank, self.currency_name)

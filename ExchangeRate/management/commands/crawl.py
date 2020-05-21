@@ -3,7 +3,6 @@ from BankExchangerate.spiders.BankSpider import BankSpider1, BankSpider2, BankSp
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
-
 # print("basecommand")
 
 
@@ -17,5 +16,3 @@ class Command(BaseCommand):
         process.crawl(BankSpider3)
         process.crawl(BankSpider4)
         process.start()
-
-
