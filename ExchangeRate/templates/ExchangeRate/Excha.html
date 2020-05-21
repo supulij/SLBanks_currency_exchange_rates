@@ -2,82 +2,66 @@
 {% extends 'ExchangeRate/Home.html' %}
 {{ data }}
 
-{#</head>#}
-
-
-<body>
-<style>
-    {#h1 {#}
-    {#    font-size: 36px;#}
-    {#    line-height: 40px;#}
-    {#    }#}
-    h3 {
-        font-size: 24px;
-        text-align: center;
-        line-height: 40px;
-    }
-
-    h5 {
-        font-size: 14px;
-        text-align: right;
-        line-height: 20px;
-    }
-
-
-    .content-table {
-        border-collapse: collapse;
-    {#padding-left: inherit;#} margin-left: auto;
-        margin-right: auto;
-        font-size: 1em;
-        min-width: 400px;
-    }
-
-
-    .content-table thead th {
-        background-color: aquamarine;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-    }
-
-
-</style>
-
 {% block content %}
+
+    <style>
+        h3 {
+            font-size: 1.2em;
+            text-align: center;
+            line-height: 40px;
+        }
+        h5 {
+            font-size: 1em;
+            text-align: right;
+            margin-right: 20%;
+            line-height: 20px;
+        }
+        .content-table {
+            border-collapse: collapse;
+            margin: auto;
+            width: 30%;
+            font-size: 1.1em;
+        }
+        .content-table thead th {
+            background-color: cornflowerblue;
+            color: black;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid;
+            padding: 8px;
+        }
+        .content-table th, td {
+            border: 1px solid black;
+        }
+        .content-table tr:hover {
+        {#border: 1px solid black;#} background-color: lavenderblush;
+        }
+    </style>
+
+    <br>
+    <br>
+    <h3> Selected Currency : {{ currency }} </h3>
 
     <table class="content-table">
         <thead>
-
-        <br>
-        <br>
-
-
-        <h3> Selected Currency : {{ currency }} </h3>
-        <br>
-        <br>
-        </tr>
         <tr class="content-table">
             <th> Bank</th>
             <th> Buying Rate</th>
             <th> Selling Rate</th>
-
         </tr>
         </thead>
         <tbody>
-
         {% for item in context %}
             <tr>
                 <td> {{ item.bank }}</td>
                 <td> {{ item.buying_rate }}</td>
                 <td> {{ item.selling_rate }}</td>
-
             </tr>
-
         {% endfor %}
-
         </tbody>
     </table>
+    <br>
+    <br>
     <h5> Last update on {{ last_updated }} (BST) </h5>
 
 {% endblock %}
-

@@ -16,7 +16,7 @@ def home(request):
         context = GetScrapy.objects.filter(currency_name=currency)
         last_updated = context[0].updated
 
-        # form = Homeform()
+        form = Homeform()
 
         args = {'form': form, 'context': context, 'currency': currency, 'last_updated': last_updated}
         return render(request, 'ExchangeRate/Excha.html', args)
@@ -31,18 +31,3 @@ def home(request):
 
 
 
-
-
-#
-#
-# def crawl(request):
-#     if request.method == 'POST':
-#         # call_command('crawl')
-#         # return JsonResponse("Loading")
-#         context = GetScrapy.objects.all()
-#         return render(request, 'ExchangeRate/Excha.html', {'context': context})
-#
-#     if request.method == 'GET':
-#         context = GetScrapy.objects.all()
-#
-#         return render(request, 'ExchangeRate/Excha.html', {'context': context})
