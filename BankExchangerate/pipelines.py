@@ -12,6 +12,7 @@ from scrapy.exceptions import DropItem
 from ExchangeRate.models import GetScrapy
 import sqlite3
 
+import datetime
 
 def curreny_process(item):
     if float(item['selling_rate']) or float(item['buying_rate']) in item:
@@ -52,6 +53,7 @@ class BankexchangerateItemPipeline(object):
     def process_item(self, item, spider):
 
         item = curreny_process(item)
+        item['updated'] = datetime.datetime.now()
 
         item['id'] = item['bank'] + item['currency_name']
         currency = GetScrapy()
@@ -61,6 +63,7 @@ class BankexchangerateItemPipeline(object):
         currency.buying_rate = item["buying_rate"]
         currency.selling_rate = item["selling_rate"]
         currency.id = item['id']
+        currency.updated = item['updated']
 
         currency.save()
         return item

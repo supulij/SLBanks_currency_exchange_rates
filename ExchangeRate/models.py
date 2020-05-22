@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 # import json
 
 
@@ -8,9 +9,7 @@ class GetScrapy(models.Model):
     id = models.CharField(max_length=100, primary_key=True)
     buying_rate = models.CharField(max_length=20)
     selling_rate = models.CharField(max_length=20)
-
-    # timestamp = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(default=datetime.now)
 
     class Meta:
         db_table = 'Exchange_Rates'
