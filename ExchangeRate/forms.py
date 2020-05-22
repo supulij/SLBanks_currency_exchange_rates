@@ -15,7 +15,6 @@ class Homeform(forms.Form):
 
     post = forms.CharField(label='Select the currency', widget=forms.Select(choices=[(x,x) for x in list]))
 
-
     class Meta:
         model = GetScrapy
         fields = ['currency_name']

@@ -1,45 +1,114 @@
-{#{% load static %}#}
-{% extends 'ExchangeRate/Home.html' %}
-{{ data }}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
 
-{% block content %}
 
-    <style>
-        h3 {
-            font-size: 1.2em;
-            text-align: center;
-            line-height: 40px;
-        }
-        h5 {
-            font-size: 1em;
-            text-align: right;
-            margin-right: 20%;
-            line-height: 20px;
-        }
-        .content-table {
-            border-collapse: collapse;
-            margin: auto;
-            width: 30%;
-            font-size: 1.1em;
-        }
-        .content-table thead th {
-            background-color: cornflowerblue;
-            color: black;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid;
-            padding: 8px;
-        }
-        .content-table th, td {
-            border: 1px solid black;
-        }
-        .content-table tr:hover {
-        {#border: 1px solid black;#} background-color: lavenderblush;
-        }
-    </style>
+<style>
+    h1 {
+        font-size: 36px;
+        line-height: 40px;
+    }
+    .button {
+        background-color: cadetblue;
+        margin-top: 1%;
+        margin-left: 50%;
+        border: none;
+        color: black;
+        padding: 6px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 0.9em;
+    }
+    .form_table {
+        margin-top: -2%;
+        margin-left: 30%;
+        font-size: 1.1em;
+        border: none;
+    }
+    h3 {
+        font-size: 1.2em;
+        text-align: center;
+        line-height: 40px;
+    }
 
-    <br>
-    <br>
+    h5 {
+        font-size: 1em;
+        text-align: right;
+        margin-right: 20%;
+        line-height: 20px;
+    }
+
+    .content-table {
+        border-collapse: collapse;
+        margin: auto;
+        width: 30%;
+        font-size: 1.1em;
+    }
+
+    .content-table thead th {
+        background-color: cornflowerblue;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        border: 1px solid;
+        padding: 8px;
+    }
+
+    .content-table th, td {
+    {#background-color: cornflowerblue;#} border: 1px solid black;
+    }
+
+    .content-table tr:hover {
+    {#border: 1px solid black;#} background-color: cornflowerblue;
+    }
+
+    .example1 {
+        position: relative;
+        background: white;
+        overflow: hidden;
+    }
+
+    .example1:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background-image: url({% static 'ExchangeRate/Images/image1.jpg'%});
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+
+
+</style>
+<body>
+<h1> Foreign Currency Exchange Rates of Sri Lankan Banks </h1>
+<br>
+<form method="post">
+    <table class="form_table">
+        {% csrf_token %}
+        {{ form }}
+        <button class="button" type="submit">Submit</button>
+    </table>
+</form>
+<br>
+<br>
+
+<div class="example1">
+    {#        <img src = "{% static 'ExchangeRate/Images/image1.jpg'%}"  alt="image1">#}
     <h3> Selected Currency : {{ currency }} </h3>
 
     <table class="content-table">
@@ -63,5 +132,13 @@
     <br>
     <br>
     <h5> Last update on {{ last_updated }} (BST) </h5>
+    <br>
+    <br>
 
-{% endblock %}
+</div>
+</body>
+
+
+
+
+
