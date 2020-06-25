@@ -1,5 +1,5 @@
 ## About this Projct:
-This project webscrape the foreign currenc exchange rates provided by different sri lankan bank websites and display them in a local host HTML.
+This project webscrape the foreign currency exchange rates provided by different sri lankan bank websites and display them in a locally host HTML.
 
 ### Requirements:
 - Django
