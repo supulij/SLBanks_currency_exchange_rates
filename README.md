@@ -1,6 +1,12 @@
-This Project use Scrapy to scrape foreign currency exchange rates from Sri Lankan Bank websites.
-Django was used to show the extracted data in a HTML.
+## About this Projct:
+This project webscrape the foreign currenc exchange rates provided by different sri lankan bank websites and display them in a local host HTML.
 
+### Requirements:
+Django
+Scrapy
 
-Simply run : python manage.py runserver
+### How to run:
+Install the github repository
+Run `python manage.py`
+This will update the server and provide the local host IP
 
