@@ -8,5 +8,5 @@ This project web scrapes the foreign currency exchange rates provided by differe
 ### How to run:
 Install the github repository
 Run `python manage.py`
-This will update the server and provide the local host IP
+This will update the server and provide the IP address.
 
